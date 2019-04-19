@@ -1,17 +1,17 @@
 class Message {
-  constructor(text = '', created = Date.now()){
+  constructor(text = '', created = Date.now()) {
     this.text = text;
     this.created = created;
   }
-  get created(){
+
+  get created() {
     return this._created;
   }
-  set created(created){
-    if (!created || isNaN(created)) {
-      throw new Error('Invalid created');
-    }
+
+  set created(created) {
     this._created = created;
   }
+
   toString() {
     return `Message created at: ${this.created} - Text: ${this.text}`;
   }
@@ -21,24 +21,23 @@ class ImageMessage extends Message {
   constructor(text = '',
     created = Date.now(),
     url = '',
-    thumbnail = ''
-  ){
+    thumbnail = '') {
     super(text, created);
     this.url = url;
     this.thumbnail = thumbnail;
   }
+
   toString() {
-    return `Photo: ${super.toString()}` +
-    `- URL: ${this.url}` +
-    `thumbnail: ${this.thumbnail}`;
+    return `Photo: ${super.toString()}`
+    + `- URL: ${this.url}`
+    + `thumbnail: ${this.thumbnail}`;
   }
 }
 
 
-
-var emptyMessage = new Message();
-var textMessage = new Message('Yesterday message', Date.now() - 86400);
-var photoMessage = new ImageMessage();
+const emptyMessage = new Message();
+const textMessage = new Message('Yesterday message', Date.now() - 86400);
+const photoMessage = new ImageMessage();
 
 console.log(String(emptyMessage));
 console.log(String(textMessage));
