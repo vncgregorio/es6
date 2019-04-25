@@ -1,6 +1,6 @@
-var Message = require('./message.model');
+import Message from './message.model';
 
-class ImageMessage extends Message {
+export default class ImageMessage extends Message {
   constructor(text = '', created = Date.now(),
     url = '', thumbnail = '') {
     super(text, created);
@@ -13,10 +13,8 @@ class ImageMessage extends Message {
    * @returns String
    */
   toString() {
-    return `Photo${super.toString()} ` +
-           `- Url: ${this.url} ` +
-           `- Thumbnail: ${this.thumbnail}`;
+    return `Photo${super.toString()} `
+           + `- Url: ${this.url} `
+           + `- Thumbnail: ${this.thumbnail}`;
   }
 }
-
-module.exports = ImageMessage;
